@@ -20,3 +20,45 @@
   font-size: 1.5em;
   font-weight: bold;
 }
+.homeHistCont {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 5em 3em;
+}
+.homeHistCard {
+  border: 5px solid $whitish;
+  border-radius: 5px;
+  padding: 1em;
+  margin: 0 0.5em;
+}
+.homeHistTitle {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+.homeHistPrice {
+  color: $whitish;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+.homeHistStatus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spinerCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30%;
+}
+.priceSpan {
+  font-weight: bold;
+}
+.upPrice {
+  @extend .priceSpan;
+  color: $up;
+}
+.downPrice {
+  @extend .priceSpan;
+  color: $down;
+}

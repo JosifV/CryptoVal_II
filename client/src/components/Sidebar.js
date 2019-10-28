@@ -8,6 +8,9 @@ const Sidebar = props => {
 
   return (
     <div className="sidebarMain">
+      <NavLink activeClassName="sidebarActiveLink" to={`/`}>
+        Home
+      </NavLink>
       {props.coins.map((coin, index) => {
         return (
           <NavLink

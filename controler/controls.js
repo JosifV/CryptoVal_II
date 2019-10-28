@@ -1,5 +1,10 @@
 const rp = require("request-promise");
-const { CoinHistSchema } = require("../db/models");
+const {
+  BitCoinHistSchema,
+  EthereumHistSchema,
+  SafexHistSchema,
+  BlueCoinHistSchema
+} = require("../db/models");
 
 module.exports = {
   getData: (req, res) => {
@@ -54,19 +59,64 @@ module.exports = {
         res.send("Try again");
       });
   },
-  saveToDb: (req, res, next) => {
+  saveToDb: async (req, res) => {
     const title = req.params.title;
     const arrToSave = req.body.histArr;
-    console.log(arrToSave); //* check if true
 
-    CoinHistSchema.create({})
-      .then(resp => {
-        resp.push({
-          histTitle: title,
-          histArr: arrToSave
-        });
-        res("Info saved to Database");
-      })
-      .catch(next);
+    if (title === "Bitcoin") {
+      const resp = await BitCoinHistSchema.create({
+        histTitle: title,
+        histArr: arrToSave
+      });
+      res.send(resp);
+    } else if (title === "Ethereum") {
+      const resp = await EthereumHistSchema.create({
+        histTitle: title,
+        histArr: arrToSave
+      });
+      res.send(resp);
+    } else if (title === "Safex") {
+      const resp = await SafexHistSchema.create({
+        histTitle: title,
+        histArr: arrToSave
+      });
+      res.send(resp);
+    } else if (title === "BlueCoin") {
+      const resp = await BlueCoinHistSchema.create({
+        histTitle: title,
+        histArr: arrToSave
+      });
+      res.send(resp);
+    }
+  },
+  showHistData: async (req, res) => {
+    const BitCoinHistResp = await BitCoinHistSchema.findOne(
+      {},
+      {},
+      { sort: { created_at: -1 } }
+    );
+    const EthereumHistResp = await EthereumHistSchema.findOne(
+      {},
+      {},
+      { sort: { created_at: -1 } }
+    );
+    const SafexHistResp = await SafexHistSchema.findOne(
+      {},
+      {},
+      { sort: { created_at: -1 } }
+    );
+    const BlueCoinHistResp = await BlueCoinHistSchema.findOne(
+      {},
+      {},
+      { sort: { created_at: -1 } }
+    );
+
+    let arrToReturn = [
+      BitCoinHistResp,
+      EthereumHistResp,
+      SafexHistResp,
+      BlueCoinHistResp
+    ];
+    res.send(arrToReturn);
   }
 };

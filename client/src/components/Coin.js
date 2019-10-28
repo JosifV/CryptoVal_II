@@ -11,8 +11,6 @@ const Coin = props => {
   let [coinPrice, coinPriceSet] = useState(0);
   let [allIsSet, allIsSetHandler] = useState(false);
   let [arrOfHistory, arrOfHistorySet] = useState([]);
-  let [counter, counterSet] = useState(0);
-  let ctr = 0;
 
   const arrOfArgs = [
     props.trueProps.id,
@@ -26,10 +24,9 @@ const Coin = props => {
 
   useEffect(() => {
     reqData(...arrOfArgs);
-  }, [counter]);
+  }, []);
   setInterval(() => {
-    ctr++;
-    counterSet(ctr);
+    document.location.reload();
   }, 300000); //* 5 minutes
 
   return (

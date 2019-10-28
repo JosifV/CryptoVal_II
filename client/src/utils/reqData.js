@@ -11,7 +11,7 @@ module.exports = async (
   allIsSetHandler
 ) => {
   //* `/data/${id}`;
-  const uri = `http://localhost:5000/data/${id}}`;
+  const uri = `http://localhost:5000/data/${id}`;
   const uriHist = `http://localhost:5000/historicalData/${id}`;
 
   const uriSaveHist = `http://localhost:5000/saveToDb/${title}`;
@@ -58,5 +58,4 @@ module.exports = async (
   axios.post(uriSaveHist, { histArr });
 
   allIsSetHandler(true);
-  return;
 };
