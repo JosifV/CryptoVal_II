@@ -1,0 +1,27 @@
+@import "../colors.scss";
+
+.sidebarMain {
+  background: $pureGray;
+
+  display: flex;
+  flex-direction: column;
+
+  a {
+    color: $white;
+    padding: 0.5em;
+    padding-left: 30%;
+    text-decoration: none;
+    text-align: left;
+    font-weight: bolder;
+    font-size: 1.1em;
+    &:hover {
+      background: $darkGray;
+    }
+  }
+  .sidebarActiveLink {
+    background: $lightGray;
+    &:hover {
+      background: $lightGray;
+    }
+  }
+}

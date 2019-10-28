@@ -1,0 +1,22 @@
+@import "../mixins/resetTags.scss";
+@import "../colors.scss";
+
+.homeMain {
+  background: $lightGray;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+
+  @include resetP(0.5em, 0);
+  padding-top: 2em;
+}
+
+.homeTitleMain {
+  font-size: 3em;
+  font-weight: bold;
+  margin: 0 !important;
+}
+.homeTitleShort {
+  font-size: 1.5em;
+  font-weight: bold;
+}
